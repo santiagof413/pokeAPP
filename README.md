@@ -1,7 +1,7 @@
-# PokeAPP
+# PokeAPP introduction
+This project is a personal project that utilizes the PokeAPI to create a simple Angular application for learning purposes. It demonstrates how to fetch and display data from the PokeAPI, showcasing various Angular features such as components, services, and routing.This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
-
+# Getting Started
 ## Development server
 
 To start a local development server, run:
@@ -12,19 +12,6 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
 
 ## Building
 
@@ -44,16 +31,33 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+# About the Project
+## Project Structure
+The project is structured as follows:
 ```bash
-ng e2e
+src/
+├── app/
+│   ├── core/ # Core module for singleton services and shared functionality
+│   ├── features/ # Feature modules for different parts of the application
+│   ├── layout/ # Layout module for shared components like headers and footers
+│   ├── shared/ # Shared module for reusable components, directives, and pipes
+│   ├── app.component.css 
+│   ├── app.component.html
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   ├── app.routes.ts
+├── index.html
+├── main.ts
+├── styles.css
 ```
+## Current Objectives
+The current objectives of this project include:
+- Build the Home page of the site.
+- Build the navigation bar of the site.
+- Build the Pokemon list page.
+- Build the Pokemon details page. 
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## By
+This project was created by **David Santiago Fernandez Dejoy**:
+- [GitHub](https://github.com/santiagof413)
+- [LinkedIn](https://www.linkedin.com/in/santiagof413/)
