@@ -1,1 +1,34 @@
-<p>home-page works!</p>
+<section
+  class="w-full h-full bg-black-900 text-black flex flex-col items-center justify-center border-8 border-black-800 rounded-lg shadow-lg p-8"
+>
+  <header class="flex flex-col items-center justify-center gap-4">
+    <a href="https://pokeapi.co/docs/v2" target="_blank"
+      ><img
+        src="pokeball.webp"
+        alt="Pokeball Image"
+        class="w-32 h-32 rounded-full hover:scale-110 hover:shadow-xl/20 hover:shadow-black transition-transform duration-100"
+    /></a>
+
+    <h1 class="text-3xl font-bold">PokeApp</h1>
+    <p class="text-lg">Explore the world of Pokémon!</p>
+  </header>
+  <div class="mt-8 w-full max-w-4xl text-center">
+    <p>
+      Welcome to <strong>PokeApp</strong> , a site where you can explore all the
+      information provided by the
+      <a
+        target="_blank"
+        class="text-black-500 hover:underline"
+        href="https://pokeapi.co/docs/v2"
+        >PokeAPI</a
+      >. Currently, the following sections are available:
+    </p>
+    <ul class="list-disc list-inside mt-4">
+      <li>
+        <a class="text-black-500 hover:underline" routerLink="/pokemons"
+          >Pokemons</a
+        >
+      </li>
+    </ul>
+  </div>
+</section>
