@@ -1,15 +1,16 @@
-<div class="min-h-screen flex">
+<div class="min-h-screen flex flex-col md:flex-row">
   <!-- Sidebar -->
   @if(sidebarIsVisible) {
-  <app-sidebar></app-sidebar>}
+  <app-sidebar class="w-full md:w-64 bg-gray-800 text-white"></app-sidebar>
+  }
+
   <!-- Main content -->
-  <main class="flex-1 p-6 bg-gray-100">
-    <!-- Toggle button -->
+  <main class="flex-1 p-6 bg-gray-100 relative">
+    <!-- Toggle button (siempre visible) -->
     <button
       (click)="toggleSidebar()"
-      class="absolute bottom-0 mb-4 px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+      class="fixed bottom-4 right-4 z-30 p-3 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-700 transition"
     >
-      @if(sidebarIsVisible){
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -21,26 +22,11 @@
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
         />
       </svg>
-
-      } @else {<svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-        />
-      </svg>
-      }
     </button>
+
     <router-outlet></router-outlet>
   </main>
 </div>

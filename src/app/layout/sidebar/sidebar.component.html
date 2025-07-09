@@ -1,17 +1,27 @@
-<aside class="h-dvh w-58 bg-gray-800 text-white p-4">
-  <a routerLink="/">
-    <h2 class="text-xl font-bold mb-4 text-center">PokeAPP</h2>
+<aside
+  class="w-full lg:w-64 bg-gray-800 text-white p-4
+         flex flex-row lg:flex-col items-center lg:items-stretch
+         justify-between lg:justify-start
+         space-x-4 lg:space-x-0 lg:space-y-6"
+>
+  <!-- Logo / título -->
+  <a routerLink="/" class="text-2xl font-bold text-center">
+    PokeAPP
   </a>
-  <nav class="space-y-2 j">
+
+  <!-- Navegación -->
+  <nav class="flex flex-row lg:flex-col space-x-4 lg:space-x-0 lg:space-y-2">
     <a
       routerLink="/"
-      class="block hover:bg-gray-700 py-1 rounded text-center cursor-pointer"
-      >Home</a
+      class="hover:bg-gray-700 px-4 py-2 rounded transition text-center"
     >
+      Home
+    </a>
     <a
       routerLink="/pokemons"
-      class="block hover:bg-gray-700 py-1 rounded text-center cursor-pointer"
-      >Pokemons</a
+      class="hover:bg-gray-700 px-4 py-2 rounded transition text-center"
     >
+      Pokémons
+    </a>
   </nav>
 </aside>
