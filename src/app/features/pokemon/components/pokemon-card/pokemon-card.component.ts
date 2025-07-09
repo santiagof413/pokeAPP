@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import Pokemon from '../../../../shared/models/pokemon/Pokemon';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './pokemon-card.component.html',
 })
 export class PokemonCardComponent {
-
+  pokemon = input<Pokemon>();
 }
