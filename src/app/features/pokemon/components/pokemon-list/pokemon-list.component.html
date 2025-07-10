@@ -2,18 +2,29 @@
   placeholder="Search pokemon"
   (searchQueryButton)="makeSearch($event)"
 ></app-search-bar>
-<div
-  class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 p-3 md:p-4 xl:p-5 dark:bg-gray-900"
->
-  @if(pokemonList.length === 0) {
-  <div class="h- col-span-full text-center text-gray-500 dark:text-gray-400">
-    No Pokémon found.
+
+<!-- Loading -->
+@if (isLoading) {
+  <div class="col-span-full text-center text-gray-500 dark:text-gray-400 py-10 dark:bg-gray-900">
+    Cargando Pokémons...
   </div>
-  } @else { @for(pokemon of pokemonList; track pokemon.id) {
-  <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
-  } }
-</div>
+} @else {
+  <div
+    class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 p-3 md:p-4 xl:p-5 dark:bg-gray-900"
+  >
+    @if (pokemonList.length === 0) {
+      <div class="col-span-full text-center text-gray-500 dark:text-gray-400">
+        No Pokémon found.
+      </div>
+    } @else {
+      @for (pokemon of pokemonList; track pokemon.id) {
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      }
+    }
+  </div>
+}
+
+<!-- Pagination -->
 <div class="dark:bg-gray-900 p-0.5 md:p-1 lg:p-2 xl:p-3">
   <app-pagination (action)="changePage($event)"></app-pagination>
 </div>
-    

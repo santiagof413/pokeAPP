@@ -19,6 +19,7 @@ export class PokemonListComponent implements OnInit {
   pokemonListResources: NamedAPIResource[]; //List of URLs where are all the infomation of the pokemon
   pokemonList: Pokemon[]; //List of pokemons with information
   pokemonListCache: Pokemon[]; // Cache for pokemon data to avoid unnecessary API calls
+  isLoading: boolean = true; // Flag to indicate if data is being loaded
 
   constructor(private pokemonService: PokemonService) {
     // Initialize pagination data
@@ -34,15 +35,25 @@ export class PokemonListComponent implements OnInit {
     this.pokemonListCache = [];
   }
   ngOnInit(): void {
-    //FIRST: Get the total count of pokemons from the service
-    this.paginationData.count = this.pokemonService.getPokemonList().count;
-    this.paginationData.totalPages = Math.ceil(
-      this.paginationData.count / this.paginationData.itemsbyPage
-    );
-    this.loadPokemonsInHTML();
+    this.isLoading = true; // Set loading flag to true
+
+    this.pokemonService.fetchPokemonList().subscribe({
+      next: (list) => {
+        this.paginationData.count = list.count;
+        this.paginationData.totalPages = Math.ceil(
+          list.count / this.paginationData.itemsbyPage
+        );
+        this.loadPokemonsInHTML(); // Solo se llama si ya se tiene la data cargada
+      },
+      error: (err) => {
+        console.error('Error fetching Pokemon list:', err);
+        this.isLoading = false;
+      },
+    });
   }
 
   loadPokemonsInHTML() {
+    this.isLoading = true; // Set loading flag to true
     if (
       this.pokemonListCache.length >
       this.paginationData.currentPage * this.paginationData.itemsbyPage
@@ -51,6 +62,7 @@ export class PokemonListComponent implements OnInit {
         (this.paginationData.currentPage - 1) * this.paginationData.itemsbyPage,
         this.paginationData.currentPage * this.paginationData.itemsbyPage
       );
+      this.isLoading = false; // Set loading flag to false
       return;
     } else {
       this.loadInformationInCache();
@@ -58,6 +70,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   loadInformationInCache() {
+    this.isLoading = true; // Set loading flag to true
     const start =
       (this.paginationData.currentPage - 1) * this.paginationData.itemsbyPage;
     const end =
@@ -75,9 +88,11 @@ export class PokemonListComponent implements OnInit {
       next: (pokemons: Pokemon[]) => {
         this.pokemonList = pokemons;
         this.pokemonListCache.push(...pokemons); // cachearlos todos
+        this.isLoading = false; // Set loading flag to false
       },
       error: (err) => {
         console.error('Error fetching pokemons:', err);
+        this.isLoading = false; // Set loading flag to false even on error
       },
     });
   }
@@ -87,7 +102,7 @@ export class PokemonListComponent implements OnInit {
       this.loadPokemonsInHTML();
       return;
     }
-
+    this.isLoading = true; // Set loading flag to true
 
     this.pokemonListResources = this.pokemonService
       .getPokemonList()
@@ -95,16 +110,18 @@ export class PokemonListComponent implements OnInit {
         pokemon.name.toLowerCase().includes(query.toLowerCase())
       );
     this.pokemonList = [];
-    
+
     const requests = this.pokemonListResources.map((resource) =>
       this.pokemonService.getPokemon(resource.name)
     );
     forkJoin(requests).subscribe({
       next: (pokemons: Pokemon[]) => {
         this.pokemonList = pokemons;
+        this.isLoading = false; // Set loading flag to false
       },
       error: (err) => {
         console.error('Error fetching pokemons:', err);
+        this.isLoading = false; // Set loading flag to false even on error
       },
     });
   }
