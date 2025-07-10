@@ -50,12 +50,22 @@ src/
 ├── main.ts
 ├── styles.css
 ```
-## Current Objectives
-The current objectives of this project include:
-- Build the Home page of the site.
-- Build the navigation bar of the site.
-- Build the Pokemon list page.
-- Build the Pokemon details page. 
+## Project Features Available
+
+Current version: **0.1.0** (2025-07-10)
+
+- ✅ **Home Page**  
+  A welcoming landing page that introduces the purpose of the app.
+
+- ✅ **Navigation Bar**  
+  A reusable navbar that allows users to navigate between the Home, Pokémon List, and other sections.
+
+- ✅ **Pokémon List Page**  
+  Displays a paginated and searchable list of Pokémon using data from the PokeAPI.
+
+- ✅ **Pokémon Details Page**  
+  Shows detailed information about a selected Pokémon, including its name, image, types, stats, abilities, and more.
+
 
 ## By
 This project was created by **David Santiago Fernandez Dejoy**:
