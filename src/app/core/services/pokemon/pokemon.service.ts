@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Pokemon from '../../shared/models/pokemon/Pokemon';
-import NamedAPIResourceList from '../../shared/models/api/NamedAPIResourceList ';
+import Pokemon from '../../../shared/models/pokemon/Pokemon';
+import NamedAPIResourceList from '../../../shared/models/api/NamedAPIResourceList ';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,11 @@ import NamedAPIResourceList from '../../shared/models/api/NamedAPIResourceList '
 export class PokemonService {
   // Base URL for the PokeAPI to fetch Pokémon data
   private readonly BASEURL = 'https://pokeapi.co/api/v2/pokemon/';
+  // Endpoint to fetch all Pokémon resources with a limit and offset
   private readonly GETALLAPIRESOURCES = '?limit=1302&offset=0';
 
   private pokemonListCache : NamedAPIResourceList;
+  private pokemonSelected: Pokemon | null;
 
   constructor(private http:HttpClient) { 
     this.pokemonListCache={
@@ -20,8 +22,22 @@ export class PokemonService {
       previous: null,
       results: []
     }
+    this.pokemonSelected=null;
   }
 
+
+  setPokemonSelected(pokemon: Pokemon) {
+    this.pokemonSelected = pokemon;
+  }
+  getPokemonSelected(): Pokemon | null {
+    return this.pokemonSelected;
+  }
+  /**
+   * Retrieves the NamedAPIResourceList containing all Pokémon.
+   * This method caches the result to avoid unnecessary API calls.
+   * If the cache is empty, it fetches the data from the API.
+   * @returns 
+   */
   getPokemonList():NamedAPIResourceList{
     if (this.pokemonListCache.count > 0) {
       return this.pokemonListCache;

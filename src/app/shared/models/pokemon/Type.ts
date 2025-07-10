@@ -1,8 +1,8 @@
-import { NamedAPIResourceLenguage } from '../api/NamedAPIResource';
+import { NamedAPIResourceLanguage } from '../api/NamedAPIResource';
 
 export default interface Type {
   names: {
     name: string; // Name of the ability in a specific language
-    lenguage: NamedAPIResourceLenguage; // Language of the name
+    language: NamedAPIResourceLanguage; // Language of the name
   }[];
 }

@@ -1,4 +1,4 @@
-import { EnumLenguajes } from './EnumLenguajes';
+import { EnumLanguajes } from './EnumLanguajes';
 
 export interface NamedAPIResource {
   // The name of the resource
@@ -7,9 +7,9 @@ export interface NamedAPIResource {
   url: string;
 }
 
-export interface NamedAPIResourceLenguage {
+export interface NamedAPIResourceLanguage {
   // The name of the resource
-  name: EnumLenguajes;
+  name: EnumLanguajes;
   // The URL of the resource
   url: string;
 }
