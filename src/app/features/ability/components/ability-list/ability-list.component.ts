@@ -130,11 +130,14 @@ export class AbilityListComponent {
     const requests = this.abilityListResources.map((resource) =>
       this.abilityService.getAbility(resource.name)
     );
+    if (requests.length === 0) {
+      this.isLoading = false; // Set loading flag to false if no requests
+      return;
+    }
     forkJoin(requests).subscribe({
       next: (abilities: Ability[]) => {
         this.abilityList = abilities;
         this.isLoading = false; // Set loading flag to false
-        console.log('Abilities found:', this.abilityList.length);
       },
       error: (err) => {
         console.error('Error fetching abilities:', err);

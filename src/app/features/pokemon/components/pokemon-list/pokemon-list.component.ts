@@ -131,6 +131,11 @@ export class PokemonListComponent implements OnInit {
     const requests = this.pokemonListResources.map((resource) =>
       this.pokemonService.getPokemon(resource.name)
     );
+
+    if (requests.length === 0) {
+      this.isLoading = false; // Set loading flag to false if no requests
+      return;
+    }
     forkJoin(requests).subscribe({
       next: (pokemons: Pokemon[]) => {
         this.pokemonList = pokemons;
