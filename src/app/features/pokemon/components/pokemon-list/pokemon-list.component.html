@@ -6,7 +6,7 @@
 <!-- Loading -->
 @if (isLoading) {
   <div class="col-span-full text-center text-gray-500 dark:text-gray-400 py-10 dark:bg-gray-900">
-    Cargando Pokémons...
+    Loading Pokemons...
   </div>
 } @else {
   <div
@@ -14,7 +14,7 @@
   >
     @if (pokemonList.length === 0) {
       <div class="col-span-full text-center text-gray-500 dark:text-gray-400">
-        No Pokémon found.
+        Pokemon not found
       </div>
     } @else {
       @for (pokemon of pokemonList; track pokemon.id) {
