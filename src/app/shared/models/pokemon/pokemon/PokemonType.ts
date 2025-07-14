@@ -1,4 +1,4 @@
-import { NamedAPIResource } from '../api/NamedAPIResource';
+import { NamedAPIResource } from '../../api/NamedAPIResource';
 
 export default interface PokemonType {
   // The slot in which the Pokémon's type appears

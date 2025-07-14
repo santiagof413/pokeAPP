@@ -1,4 +1,4 @@
-import { NamedAPIResourceLanguage } from '../api/NamedAPIResource';
+import { NamedAPIResourceLanguage } from "../../api/NamedAPIResource";
 
 export default interface VerboseEffect {
   effect: string; // The effect of the ability in a specific language

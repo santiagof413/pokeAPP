@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import Pokemon from '../../../../shared/models/pokemon/Pokemon';
+import Pokemon from '../../../../shared/models/pokemon/pokemon/Pokemon';
 import { Router } from '@angular/router';
 import { PokemonService } from '../../../../core/services/pokemon/pokemon.service';
 

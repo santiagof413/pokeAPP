@@ -1,8 +1,9 @@
-import { NamedAPIResource } from '../api/NamedAPIResource';
+import { NamedAPIResource } from '../../api/NamedAPIResource';
 import PokemonAbility from './PokemonAbility';
 import PokemonSprites from './PokemonSprites';
 import PokemonStat from './PokemonStat';
 import PokemonType from './PokemonType';
+
 
 export default interface Pokemon {
   // The unique identifier for the Pokémon

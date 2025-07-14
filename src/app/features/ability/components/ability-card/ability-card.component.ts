@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
-import Ability from '../../../../shared/models/pokemon/Ability';
 import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
 import { EnumLanguajes } from '../../../../shared/models/api/EnumLanguajes';
+import Ability from '../../../../shared/models/pokemon/ability/Ability';
 
 @Component({
   selector: 'app-ability-card',

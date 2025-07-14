@@ -1,7 +1,7 @@
 import { Component, effect, input, OnInit } from '@angular/core';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import NamedAPIResourceList from '../../../../shared/models/api/NamedAPIResourceList ';
-import Pokemon from '../../../../shared/models/pokemon/Pokemon';
+import Pokemon from '../../../../shared/models/pokemon/pokemon/Pokemon';
 import { PokemonService } from '../../../../core/services/pokemon/pokemon.service';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 import { SearchBarComponent } from '../../../../shared/components/search-bar/search-bar.component';

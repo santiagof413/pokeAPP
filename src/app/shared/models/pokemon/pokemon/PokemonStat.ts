@@ -1,4 +1,4 @@
-import { NamedAPIResource } from '../api/NamedAPIResource';
+import { NamedAPIResource } from '../../api/NamedAPIResource';
 
 export default interface PokemonStat {
   //Url to the API resource for the stat

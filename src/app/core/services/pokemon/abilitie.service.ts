@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Ability from '../../../shared/models/pokemon/Ability';
 import { EnumLanguajes } from '../../../shared/models/api/EnumLanguajes';
 import NamedAPIResourceList from '../../../shared/models/api/NamedAPIResourceList ';
 import { Observable, of, tap } from 'rxjs';
+import Ability from '../../../shared/models/pokemon/ability/Ability';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Pokemon from '../../../shared/models/pokemon/Pokemon';
+import Pokemon from '../../../shared/models/pokemon/pokemon/Pokemon';
 import NamedAPIResourceList from '../../../shared/models/api/NamedAPIResourceList ';
 import { Observable, of, tap } from 'rxjs';
 

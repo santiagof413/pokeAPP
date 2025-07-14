@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../../core/services/pokemon/pokemon.service';
-import Pokemon from '../../../../shared/models/pokemon/Pokemon';
+import Pokemon from '../../../../shared/models/pokemon/pokemon/Pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
-import Ability from '../../../../shared/models/pokemon/Ability';
 import { EnumLanguajes } from '../../../../shared/models/api/EnumLanguajes';
+import Ability from '../../../../shared/models/pokemon/ability/Ability';
 
 @Component({
   selector: 'app-pokemon-details',

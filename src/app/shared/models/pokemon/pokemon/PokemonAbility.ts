@@ -1,4 +1,4 @@
-import { NamedAPIResource } from '../api/NamedAPIResource';
+import { NamedAPIResource } from '../../api/NamedAPIResource';
 
 export default interface PokemonAbility {
   //Whether or not this is a hidden ability.

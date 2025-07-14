@@ -4,9 +4,9 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
 import PaginationData from '../../../../shared/models/utils/PaginationData';
 import { NamedAPIResource } from '../../../../shared/models/api/NamedAPIResource';
-import Ability from '../../../../shared/models/pokemon/Ability';
 import { forkJoin } from 'rxjs';
 import { AbilityCardComponent } from '../ability-card/ability-card.component';
+import Ability from '../../../../shared/models/pokemon/ability/Ability';
 
 @Component({
   selector: 'app-ability-list',
