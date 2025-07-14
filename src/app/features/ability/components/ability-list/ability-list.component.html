@@ -1,1 +1,31 @@
-<p>ability-list works!</p>
+<app-search-bar
+  placeholder="Search ability"
+  (searchQueryButton)="makeSearch($event)"
+></app-search-bar>
+
+<!-- Loading -->
+@if (isLoading) {
+  <div class="col-span-full text-center text-gray-500 dark:text-gray-400 py-10 dark:bg-gray-900">
+    Loading abilities...
+  </div>
+} @else {
+  <div
+    class="grid gap-8 sm:grid-cols-1 lg:grid-cols-2 p-3 md:p-4 xl:p-5 dark:bg-gray-900"
+  >
+    @if (abilityList.length === 0) {
+      <div class="col-span-full text-center text-gray-500 dark:text-gray-400">
+        Ability not found
+      </div>
+    } @else {
+      @for (ability of abilityList ; track ability.id) {
+        <app-ability-card [ability]="ability"></app-ability-card>
+      }
+    }
+  </div>
+}
+
+<!-- Pagination -->
+<div class="dark:bg-gray-900 p-0.5 md:p-1 lg:p-2 xl:p-3">
+  <app-pagination (action)="changePage($event)"></app-pagination>
+</div>
+

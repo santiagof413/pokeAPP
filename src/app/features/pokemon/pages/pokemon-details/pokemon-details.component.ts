@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../../core/services/pokemon/pokemon.service';
 import Pokemon from '../../../../shared/models/pokemon/Pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbilitieService } from '../../../../core/services/pokemon/abilitie.service';
+import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
 import Ability from '../../../../shared/models/pokemon/Ability';
 import { EnumLanguajes } from '../../../../shared/models/api/EnumLanguajes';
 
@@ -18,7 +18,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
-    private abilityService: AbilitieService,
+    private abilityService: AbilityService,
     private route: ActivatedRoute,
     private router: Router
   ) {

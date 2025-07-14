@@ -11,7 +11,7 @@ export class PokemonService {
   // Base URL for the PokeAPI to fetch Pokémon data
   private readonly BASEURL = 'https://pokeapi.co/api/v2/pokemon/';
   // Endpoint to fetch all Pokémon resources with a limit and offset
-  private readonly GETALLAPIRESOURCES = '?limit=1302&offset=0';
+  private readonly GETALLAPIRESOURCES = 'https://pokeapi.co/api/v2/pokemon/?limit=1302&offset=0';
 
   private pokemonListCache: NamedAPIResourceList | null;
   private pokemonSelected: Pokemon | null;
@@ -62,7 +62,7 @@ export class PokemonService {
     }
 
     return this.http
-      .get<NamedAPIResourceList>('https://pokeapi.co/api/v2/pokemon?limit=1000')
+      .get<NamedAPIResourceList>(this.GETALLAPIRESOURCES)
       .pipe(
         tap((data) => {
           this.pokemonListCache = data;
