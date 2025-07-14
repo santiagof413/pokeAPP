@@ -68,17 +68,11 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   getAbilityName(ability: Ability): string {
-    return (
-      ability.names.find((n) => n.language.name == this.lang)?.name ??
-      'Name not available'
-    );
+    return this.abilityService.getAbilityName(ability, this.lang);
   }
 
   getAbilityEffect(ability: Ability): string {
-    return (
-      ability.effect_entries.find((e) => e.language.name == this.lang)?.effect ??
-      'Efect not available'
-    );
+    return this.abilityService.getAbilityEffect(ability, this.lang);
   }
 
 }
