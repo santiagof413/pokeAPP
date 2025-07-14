@@ -17,7 +17,7 @@ import { forkJoin } from 'rxjs';
 export class PokemonListComponent implements OnInit {
   paginationData: PaginationData; //Data for controlling pagination
   pokemonListResources: NamedAPIResource[]; //List of URLs where are all the infomation of the pokemon
-  pokemonList: Pokemon[]; //List of pokemons with information
+  pokemonList: Pokemon[]; //List of pokemons with information (THIS IS THE ONE THAT IS SHOWN IN THE HTML)
   pokemonListCache: Pokemon[]; // Cache for pokemon data to avoid unnecessary API calls
   isLoading: boolean = true; // Flag to indicate if data is being loaded
 
@@ -36,9 +36,9 @@ export class PokemonListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isLoading = true; // Set loading flag to true
-
     this.pokemonService.fetchPokemonList().subscribe({
       next: (list) => {
+        // Cache the list of Pokémon resources
         this.paginationData.count = list.count;
         this.paginationData.totalPages = Math.ceil(
           list.count / this.paginationData.itemsbyPage
@@ -52,8 +52,13 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
+  /**
+   * Loads Pokémon data into the HTML view based on pagination settings.
+   * If the cache is empty, it fetches data from the API.
+   */
   loadPokemonsInHTML() {
     this.isLoading = true; // Set loading flag to true
+    //If the cache is not empty, we can use it to show the pokemons
     if (
       this.pokemonListCache.length >
       this.paginationData.currentPage * this.paginationData.itemsbyPage
@@ -69,6 +74,12 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
+  /**
+   * Loads Pokémon data into the cache and updates the displayed list.
+   * This method fetches Pokémon data based on the current pagination settings.
+   * It uses forkJoin to make multiple API calls concurrently.
+   * The results are then stored in the pokemonList and pokemonListCache arrays.
+   */
   loadInformationInCache() {
     this.isLoading = true; // Set loading flag to true
     const start =
@@ -87,7 +98,7 @@ export class PokemonListComponent implements OnInit {
     forkJoin(requests).subscribe({
       next: (pokemons: Pokemon[]) => {
         this.pokemonList = pokemons;
-        this.pokemonListCache.push(...pokemons); // cachearlos todos
+        this.pokemonListCache.push(...pokemons); // Save in cache
         this.isLoading = false; // Set loading flag to false
       },
       error: (err) => {
@@ -97,6 +108,12 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
+  /**
+   * Searches for Pokémon based on the provided query.
+   * If the query is empty, it reloads the full list of Pokémon.
+   * Otherwise, it filters the cached Pokémon list based on the query.
+   * @param query - The search term to filter Pokémon by name.
+   */
   makeSearch(query: string) {
     if (query.trim() === '') {
       this.loadPokemonsInHTML();
@@ -126,6 +143,11 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
+  /**
+   * Changes the current page based on the action ('next' or 'previous').
+   * It updates the pagination data and reloads the Pokémon list accordingly.
+   * @param action - The action to perform ('next' or 'previous').
+   */
   changePage(action: string) {
     if (
       action == 'next' &&

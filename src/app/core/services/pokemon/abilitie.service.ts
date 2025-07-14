@@ -8,8 +8,14 @@ import Ability from '../../../shared/models/pokemon/Ability';
 export class AbilitieService {
   // Base URL for the PokeAPI to fetch Pokémon data
   private readonly BASEURL = 'https://pokeapi.co/api/v2/ability/';
-
+  
   constructor(private http:HttpClient) { }
+
+  /**
+   * Fetches the details of a specific ability by its ID or name.
+   * @param id - The ID or name of the ability to fetch.
+   * @returns An observable containing the Ability details.
+   */
   getAbility(id: number | string) {
       const url = `${this.BASEURL}${id}`;
       return this.http.get<Ability>(url);

@@ -21,9 +21,19 @@ export class PokemonService {
     this.pokemonSelected = null;
   }
 
+  /**
+   * Sets the currently selected Pokémon. Used to the shared state across components.
+   * For example, move details or other components that need to know which Pokémon is selected.
+   * @param pokemon - The Pokémon to set as selected.
+   */
   setPokemonSelected(pokemon: Pokemon) {
     this.pokemonSelected = pokemon;
   }
+  /**
+   * Retrieves the currently selected Pokémon.Used to get the selected Pokémon
+   * for displaying details or other information in the UI.
+   * @returns The selected Pokémon or null if none is selected.
+   */
   getPokemonSelected(): Pokemon | null {
     return this.pokemonSelected;
   }
@@ -40,6 +50,12 @@ export class PokemonService {
     return this.pokemonListCache;
   }
   
+
+  /**
+   * Fetches the list of Pokémon from the PokeAPI.
+   * This method caches the result to avoid unnecessary API calls.
+   * @returns An observable containing the NamedAPIResourceList of Pokémon.
+   */
   fetchPokemonList(): Observable<NamedAPIResourceList> {
     if (this.pokemonListCache) {
       return of(this.pokemonListCache); // cache
