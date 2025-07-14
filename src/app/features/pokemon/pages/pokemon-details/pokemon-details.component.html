@@ -21,7 +21,8 @@
           class="w-24 h-24 mx-auto"
         />
       </div>
-      <div class="text-center">
+      @if(pokemon?.sprites?.back_default){
+        <div class="text-center">
         <p class="text-sm text-gray-500 dark:text-gray-400">Back</p>
         <img
           [src]="pokemon?.sprites?.back_default"
@@ -29,6 +30,7 @@
           class="w-24 h-24 mx-auto"
         />
       </div>
+      }
     </div>
   </div>
 
@@ -66,7 +68,8 @@
       <ul class="space-y-4 max-w-2xl mx-auto text-left">
         @for (ability of pokemonAbilities; track ability.id) {
         <li
-          class="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg border border-gray-200 dark:border-gray-600"
+          class="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+          (click)="goToAbilityDetails(ability)"
         >
           <p class="text-lg font-semibold capitalize text-gray-800 dark:text-white mb-1">
             {{ getAbilityName(ability) }}

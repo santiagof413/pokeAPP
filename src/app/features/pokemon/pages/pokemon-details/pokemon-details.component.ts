@@ -75,4 +75,9 @@ export class PokemonDetailsComponent implements OnInit {
     return this.abilityService.getAbilityEffect(ability, this.lang);
   }
 
+  goToAbilityDetails(ability: Ability): void {
+    this.abilityService.setAbilitySelected(ability);
+    this.router.navigate(['/abilities', ability.id]);
+  }
+
 }

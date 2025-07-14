@@ -26,7 +26,7 @@ export class PokemonService {
    * For example, move details or other components that need to know which Pokémon is selected.
    * @param pokemon - The Pokémon to set as selected.
    */
-  setPokemonSelected(pokemon: Pokemon) {
+  setPokemonSelected(pokemon: Pokemon | null) {
     this.pokemonSelected = pokemon;
   }
   /**

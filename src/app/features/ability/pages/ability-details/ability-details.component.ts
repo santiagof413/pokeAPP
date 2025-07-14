@@ -3,6 +3,7 @@ import Ability from '../../../../shared/models/pokemon/ability/Ability';
 import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnumLanguajes } from '../../../../shared/models/api/EnumLanguajes';
+import { PokemonService } from '../../../../core/services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-ability-details',
@@ -15,6 +16,7 @@ export class AbilityDetailsComponent implements OnInit {
 
   constructor(
     private abilityService: AbilityService,
+    private pokemonService: PokemonService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -66,6 +68,11 @@ export class AbilityDetailsComponent implements OnInit {
       return 'Flavor text not available';
     }
     return this.abilityService.getAbilityFlavorText(this.ability, this.lang);
+  }
+
+  goToPokemonDetails(name: string): void {
+    this.pokemonService.setPokemonSelected(null)
+    this.router.navigate(['/pokemons', name]);
   }
 
 }

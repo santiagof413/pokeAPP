@@ -46,7 +46,8 @@
     <div class="flex flex-wrap gap-2">
       @for (p of ability?.pokemon; track p.pokemon.name) {
       <span
-        class="bg-amber-200 dark:bg-amber-600 text-sm px-3 py-1 rounded-full font-medium text-gray-900 dark:text-white"
+        class="bg-amber-200 dark:bg-amber-600 text-sm px-3 py-1 rounded-full font-medium text-gray-900 dark:text-white hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+        (click)="goToPokemonDetails(p.pokemon.name)"
       >
         {{ p.pokemon.name }}
       </span>
