@@ -24,7 +24,7 @@ export class PokemonDetailsComponent implements OnInit {
   ) {
     this.pokemon = this.pokemonService.getPokemonSelected();
     this.pokemonAbilities = [];
-    this.lang = EnumLanguajes.Ingles
+    this.lang = EnumLanguajes.English
   }
   ngOnInit(): void {
     this.loadPokemonGeneralDetails();

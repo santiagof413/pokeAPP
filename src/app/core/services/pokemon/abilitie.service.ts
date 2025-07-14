@@ -27,7 +27,7 @@ export class AbilityService {
    * For example, move details or other components that need to know which ability is selected.
    * @param ability - The ability to set as selected.
    */
-  setPokemonSelected(ability: Ability) {
+  setAbilitySelected(ability: Ability) {
     this.abilitySelected = ability;
   }
   /**
@@ -35,7 +35,7 @@ export class AbilityService {
    * for displaying details or other information in the UI.
    * @returns The selected ability or null if none is selected.
    */
-  getPokemonSelected(): Ability | null {
+  getAbilitySelected(): Ability | null {
     return this.abilitySelected;
   }
 
@@ -107,6 +107,13 @@ export class AbilityService {
     return (
       ability.effect_entries.find((e) => e.language.name == lang)
         ?.short_effect ?? 'Short effect not available'
+    );
+  }
+
+  getAbilityFlavorText(ability: Ability, lang: EnumLanguajes): string {
+    return (
+      ability.flavor_text_entries.find((e) => e.language.name == lang)
+        ?.flavor_text ?? 'Flavor text not available'
     );
   }
 }

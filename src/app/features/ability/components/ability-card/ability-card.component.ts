@@ -11,7 +11,7 @@ import Ability from '../../../../shared/models/pokemon/ability/Ability';
 export class AbilityCardComponent {
 
   ability = input<Ability>();
-  lang : EnumLanguajes = EnumLanguajes.Ingles;
+  lang : EnumLanguajes = EnumLanguajes.English;
 
   constructor(public abilityService:AbilityService) {
   }

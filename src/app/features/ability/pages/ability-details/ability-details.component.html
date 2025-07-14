@@ -1,1 +1,57 @@
-<p>ability-details works!</p>
+<div
+  class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800"
+>
+  <!-- Nombre de la habilidad -->
+  <h1 class="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">
+    {{ getAbilityName() }}
+  </h1>
+
+  <!-- Efecto principal -->
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-300">
+      Effect
+    </h2>
+    <p class="text-gray-800 dark:text-gray-200 text-justify">
+      {{ getAbilityEffect() }}
+    </p>
+  </div>
+
+  <!-- Generación -->
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-300">
+      Generation
+    </h2>
+    <span
+      class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium"
+    >
+      {{ ability?.generation?.name }}
+    </span>
+  </div>
+
+  <!-- Texto de ambientación -->
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-300">
+      Flavor Text
+    </h2>
+    <p class="italic text-gray-600 dark:text-gray-400">
+      {{ getAbilityFlavorText() }}
+    </p>
+  </div>
+
+  <!-- Pokémon con esta habilidad -->
+  <div>
+    <h2 class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-300">
+      Pokemons that could potentially have this ability.
+    </h2>
+    <div class="flex flex-wrap gap-2">
+      @for (p of ability?.pokemon; track p.pokemon.name) {
+      <span
+        class="bg-amber-200 dark:bg-amber-600 text-sm px-3 py-1 rounded-full font-medium text-gray-900 dark:text-white"
+      >
+        {{ p.pokemon.name }}
+      </span>
+      }
+    </div>
+  </div>
+  
+</div>
