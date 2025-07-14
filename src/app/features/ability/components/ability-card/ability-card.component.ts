@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { AbilityService } from '../../../../core/services/pokemon/abilitie.service';
 import { EnumLanguajes } from '../../../../shared/models/api/EnumLanguajes';
 import Ability from '../../../../shared/models/pokemon/ability/Ability';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ability-card',
@@ -13,7 +14,7 @@ export class AbilityCardComponent {
   ability = input<Ability>();
   lang : EnumLanguajes = EnumLanguajes.English;
 
-  constructor(public abilityService:AbilityService) {
+  constructor(public abilityService:AbilityService,private router: Router) {
   }
 
   getAbilityName() {
@@ -30,5 +31,13 @@ export class AbilityCardComponent {
       return 'Short effect not available';
     }
     return this.abilityService.getAbilityShortEffect(abilityValue, this.lang);
+  }
+
+  goToDetails() {
+    const selected = this.ability();
+    if (selected) {
+      this.abilityService.setAbilitySelected(selected);
+      this.router.navigate(['/abilities', selected.id]);
+    }
   }
 }
