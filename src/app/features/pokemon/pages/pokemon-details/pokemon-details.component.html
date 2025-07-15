@@ -1,4 +1,6 @@
-<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg dark:bg-gray-800 dark:text-white">
+<div
+  class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg dark:bg-gray-800 dark:text-white"
+>
   <!-- Encabezado -->
   <div class="flex flex-col items-center text-center">
     <img
@@ -22,7 +24,7 @@
         />
       </div>
       @if(pokemon?.sprites?.back_default){
-        <div class="text-center">
+      <div class="text-center">
         <p class="text-sm text-gray-500 dark:text-gray-400">Back</p>
         <img
           [src]="pokemon?.sprites?.back_default"
@@ -71,7 +73,9 @@
           class="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
           (click)="goToAbilityDetails(ability)"
         >
-          <p class="text-lg font-semibold capitalize text-gray-800 dark:text-white mb-1">
+          <p
+            class="text-lg font-semibold capitalize text-gray-800 dark:text-white mb-1"
+          >
             {{ getAbilityName(ability) }}
           </p>
           <p class="text-sm text-gray-600 dark:text-gray-300">
@@ -84,7 +88,9 @@
 
     <!-- Estadísticas -->
     <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded text-center">
-      <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Statistics</h2>
+      <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+        Statistics
+      </h2>
       <ul class="space-y-3 max-w-2xl mx-auto">
         @for (stat of pokemon?.stats; track stat.stat.name) {
         <li
@@ -95,12 +101,62 @@
           >
             {{ stat.stat.name }}
           </span>
-          <span class="text-blue-900 dark:text-blue-100 font-bold text-base sm:text-lg">
+          <span
+            class="text-blue-900 dark:text-blue-100 font-bold text-base sm:text-lg"
+          >
             {{ stat.base_stat }}
           </span>
         </li>
         }
       </ul>
     </div>
+  </div>
+
+  <!-- Cadena de evolucion -->
+  <div class="mt-10">
+    <h2
+      class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-white"
+    >
+      Evolution Chain
+    </h2>
+
+    @if (evolutionChains.length > 0) {
+    <div class="flex flex-wrap justify-center items-center gap-6 flex-row">
+      @for (evolutionChain of evolutionChains; track
+      evolutionChain.species.name) {
+      <div class="flex flex-col items-center hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+      (click)="goToPokemonDetails(evolutionChain.species.name)">
+        <img
+          [src]="evolutionSprites[evolutionChain.species.name]"
+          alt="{{ evolutionChain.species.name }}"
+          class="w-42 h-42 object-contain mb-2"
+        />
+        <span class="capitalize text-2xl text-gray-800 dark:text-gray-200">
+          {{ evolutionChain.species.name }}
+        </span>
+      </div>
+
+      @if (evolutionChain !== evolutionChains.at(-1)) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 text-gray-500 dark:text-gray-300"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+      } }
+    </div>
+    } @else {
+    <p class="text-center text-lg text-gray-600 dark:text-gray-300">
+      No evolution data available.
+    </p>
+    }
   </div>
 </div>
