@@ -52,7 +52,7 @@ src/
 ```
 ## Project Features Available
 
-Current version: **0.1.0** (2025-07-10)
+Current version: **0.2.0** (2025-07-15)
 
 - ✅ **Home Page**  
   A welcoming landing page that introduces the purpose of the app.
@@ -66,6 +66,11 @@ Current version: **0.1.0** (2025-07-10)
 - ✅ **Pokémon Details Page**  
   Shows detailed information about a selected Pokémon, including its name, image, types, stats, abilities, and more.
 
+- ✅ **Pokémon Abilities Page**  
+  Provides detailed information about each Pokémon ability, including effects and multilingual names.
+
+- ✅ **Pokemon abilities page**  
+  Displays detailed information about each Pokémon ability, including effects and multilingual names.
 
 ## By
 This project was created by **David Santiago Fernandez Dejoy**:

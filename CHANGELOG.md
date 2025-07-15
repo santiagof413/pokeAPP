@@ -29,3 +29,15 @@ All the changes made to the project will be documented here, including bug fixes
 ### Notes
 - This release completes the first development milestone, covering all essential pages and functionality planned for the initial phase.
 
+## [0.2.0] - 2025-07-15
+
+### Added
+- Pokémon abilities page with detailed information on each ability.
+- Evolution chain display for Pokémon, showing evolutionary stages.
+- Evolution service and models to handle evolution data.
+### Changed
+- Refactor models and services for better clarity and maintainability.
+
+### Notes
+- Fix theme inconsistencies in Pokémon data display.
+
